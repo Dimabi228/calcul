@@ -1,160 +1,190 @@
-print("=== КАЛЬКУЛЯТОР ===")
-print("1. Арифметические операторы")
-print("2. Операторы сравнения")
-print("3. Логические операторы")
-print("4. Операторы in / not in")
-print("5. Операторы is / is not")
-print("0. Выход")
+print("=" * 50)
+print("       КАЛЬКУЛЯТОР С УСЛОВНЫМИ КОНСТРУКЦИЯМИ")
+print("=" * 50)
 
+# ========== ОСНОВНОЙ ЦИКЛ ==========
 while True:
+    print("\nВыберите режим работы:")
+    print("1. Арифметические операции (+, -, *, /, //, %, **)")
+    print("2. Операторы сравнения (==, !=, >, <, >=, <=)")
+    print("3. Логические операторы (and, or, not)")
+    print("4. Операторы принадлежности (in, not in)")
+    print("5. Операторы тождественности (is, is not)")
+    print("0. Выход")
+
     try:
-        choice = input("\nВыбери пункт (0-5): ")
+        mode = input("\nВаш выбор: ").strip()
 
-        if choice == "0":
-            print("Выход из программы")
-            break
-
-#1.Арифметические операторы
-        elif choice == "1":
-            print("\n--- Арифметические операторы ---")
-            a = float(input("Первое число: "))
-            b = float(input("Второе число: "))
-            op = input("Операция (+, -, *, /, //, %, **): ")
+        #  РЕЖИМ 1: АРИФМЕТИКА 
+        if mode == "1":
+            print("\n--- Арифметические операции ---")
+            a = float(input("Введите первое число: "))
+            b = float(input("Введите второе число: "))
+            op = input("Введите оператор (+, -, *, /, //, %, **): ").strip()
 
             if op == "+":
-                print(a, "+", b, "=", a + b)
+                result = a + b
+                print(f"Результат: {a} + {b} = {result}")
             elif op == "-":
-                print(a, "-", b, "=", a - b)
+                result = a - b
+                print(f"Результат: {a} - {b} = {result}")
             elif op == "*":
-                print(a, "*", b, "=", a * b)
+                result = a * b
+                print(f"Результат: {a} * {b} = {result}")
             elif op == "/":
                 if b == 0:
                     print("Ошибка: деление на ноль!")
                 else:
-                    print(a, "/", b, "=", a / b)
+                    result = a / b
+                    print(f"Результат: {a} / {b} = {result}")
             elif op == "//":
                 if b == 0:
-                    print("Ошибка: деление на ноль!")
+                    print("Ошибка: целочисленное деление на ноль!")
                 else:
-                    print(a, "//", b, "=", a // b)
+                    result = a // b
+                    print(f"Результат: {a} // {b} = {result}")
             elif op == "%":
                 if b == 0:
-                    print("Ошибка: деление на ноль!")
+                    print("Ошибка: остаток от деления на ноль!")
                 else:
-                    print(a, "%", b, "=", a % b)
+                    result = a % b
+                    print(f"Результат: {a} % {b} = {result}")
             elif op == "**":
-                print(a, "**", b, "=", a ** b)
+                result = a ** b
+                print(f"Результат: {a} ** {b} = {result}")
             else:
-                print("Неизвестная операция!")
+                print("Ошибка: неизвестный оператор!")
 
-#2. Операторы сравнения 
-        elif choice == "2":
+        #  РЕЖИМ 2: СРАВНЕНИЕ 
+        elif mode == "2":
             print("\n--- Операторы сравнения ---")
-            x = float(input("Первое число: "))
-            y = float(input("Второе число: "))
+            a = float(input("Введите первое число: "))
+            b = float(input("Введите второе число: "))
+            op = input("Введите оператор (==, !=, >, <, >=, <=): ").strip()
 
-            if x == y:
-                print(x, "==", y, "→ True (равны)")
+            if op == "==":
+                result = a == b
+                print(f"{a} == {b} → {result}")
+            elif op == "!=":
+                result = a != b
+                print(f"{a} != {b} → {result}")
+            elif op == ">":
+                result = a > b
+                print(f"{a} > {b} → {result}")
+            elif op == "<":
+                result = a < b
+                print(f"{a} < {b} → {result}")
+            elif op == ">=":
+                result = a >= b
+                print(f"{a} >= {b} → {result}")
+            elif op == "<=":
+                result = a <= b
+                print(f"{a} <= {b} → {result}")
             else:
-                print(x, "==", y, "→ False")
+                print("Ошибка: неизвестный оператор сравнения!")
 
-            if x != y:
-                print(x, "!=", y, "→ True (не равны)")
-            else:
-                print(x, "!=", y, "→ False")
-
-            if x > y:
-                print(x, ">", y, "→ True")
-            elif x < y:
-                print(x, "<", y, "→ True")
-            else:
-                print("Числа равны")
-
-            if x >= y:
-                print(x, ">=", y, "→ True")
-            else:
-                print(x, ">=", y, "→ False")
-
-            if x <= y:
-                print(x, "<=", y, "→ True")
-            else:
-                print(x, "<=", y, "→ False")
-
-# 3. Логические операторы
-        elif choice == "3":
+        #  РЕЖИМ 3: ЛОГИЧЕСКИЕ 
+        elif mode == "3":
             print("\n--- Логические операторы ---")
-            print("Введи True или False")
-
-            a = input("Первое значение: ") == "True"
-            b = input("Второе значение: ") == "True"
-
-            print("a =", a, "  b =", b)
-
-            if a and b:
-                print("a and b → True")
+            print("Введите два логических значения (True/False или 1/0)")
+            
+            val1 = input("Первое значение: ").strip().lower()
+            val2 = input("Второе значение: ").strip().lower()
+            
+            # Преобразуем ввод в bool
+            if val1 in ("true", "1", "да", "yes"):
+                a = True
+            elif val1 in ("false", "0", "нет", "no"):
+                a = False
             else:
-                print("a and b → False")
-
-            if a or b:
-                print("a or b → True")
+                print("Ошибка: некорректное первое значение!")
+                continue
+                
+            if val2 in ("true", "1", "да", "yes"):
+                b = True
+            elif val2 in ("false", "0", "нет", "no"):
+                b = False
             else:
-                print("a or b → False")
+                print("Ошибка: некорректное второе значение!")
+                continue
 
-            if not a:
-                print("not a → True")
+            op = input("Введите оператор (and, or, not): ").strip().lower()
+
+            if op == "and":
+                result = a and b
+                print(f"{a} and {b} → {result}")
+            elif op == "or":
+                result = a or b
+                print(f"{a} or {b} → {result}")
+            elif op == "not":
+                # not применяется только к первому значению
+                result = not a
+                print(f"not {a} → {result}")
             else:
-                print("not a → False")
+                print("Ошибка: неизвестный логический оператор!")
 
-#4. Операторы принадлежности 
-        elif choice == "4":
-            print("\n--- Операторы in / not in ---")
-            numbers = [10, 20, 30, 40, 50]
-            print("Список чисел:", numbers)
+        #  РЕЖИМ 4: ПРИНАДЛЕЖНОСТЬ 
+        elif mode == "4":
+            print("\n--- Операторы принадлежности (in / not in) ---")
+            text = input("Введите строку (или список через пробел): ")
+            item = input("Что ищем: ")
 
-            num = float(input("Какое число проверить: "))
+            # Пробуем как список чисел, иначе как строку
+            try:
+                sequence = [float(x) for x in text.split()]
+                item = float(item)
+            except ValueError:
+                sequence = text   # работаем со строкой
 
-            if num in numbers:
-                print(num, "есть в списке")
+            op = input("Оператор (in / not in): ").strip().lower()
+
+            if op == "in":
+                result = item in sequence
+                print(f"{item} in {sequence} → {result}")
+            elif op == "not in":
+                result = item not in sequence
+                print(f"{item} not in {sequence} → {result}")
             else:
-                print(num, "нет в списке")
+                print("Ошибка: используйте 'in' или 'not in'!")
 
-            if num not in numbers:
-                print(num, "отсутствует в списке")
+        #  РЕЖИМ 5: ТОЖДЕСТВЕННОСТЬ 
+        elif mode == "5":
+            print("\n--- Операторы тождественности (is / is not) ---")
+            print("Создадим два объекта и сравним их идентичность")
+            
+            # Демонстрация is / is not
+            a = input("Введите значение A: ")
+            b = input("Введите значение B (может быть тем же): ")
+
+            # Создаём объекты
+            obj1 = a
+            obj2 = b
+            obj3 = a          # тот же объект, что и obj1
+
+            print(f"\nobj1 = '{obj1}' (id = {id(obj1)})")
+            print(f"obj2 = '{obj2}' (id = {id(obj2)})")
+            print(f"obj3 = '{obj3}' (id = {id(obj3)})")
+
+            op = input("\nОператор (is / is not): ").strip().lower()
+
+            if op == "is":
+                print(f"obj1 is obj2 → {obj1 is obj2}")
+                print(f"obj1 is obj3 → {obj1 is obj3}")
+            elif op == "is not":
+                print(f"obj1 is not obj2 → {obj1 is not obj2}")
+                print(f"obj1 is not obj3 → {obj1 is not obj3}")
             else:
-                print(num, "присутствует в списке")
+                print("Ошибка: используйте 'is' или 'is not'!")
 
-        elif choice == "5":
-            print("\n--- Операторы is / is not ---")
-
-            a = [1, 2, 3]
-            b = [1, 2, 3]   
-            c = a           
-
-            print("a =", a)
-            print("b =", b)
-            print("c =", c)
-
-            if a is b:
-                print("a is b → True")
-            else:
-                print("a is b → False (разные объекты)")
-
-            if a is c:
-                print("a is c → True (один объект)")
-            else:
-                print("a is c → False")
-
-            if a is not b:
-                print("a is not b → True")
-            else:
-                print("a is not b → False")
+        #  ВЫХОД 
+        elif mode == "0":
+            print("\nДо свидания!")
+            break
 
         else:
-            print("Ошибка! Введи число от 0 до 5")
+            print("Ошибка: выберите пункт от 0 до 5!")
 
     except ValueError:
-        print("Ошибка: нужно вводить числа!")
-    except ZeroDivisionError:
-        print("Ошибка: деление на ноль!")
+        print("Ошибка: введено не число!")
     except Exception as e:
-        print("Произошла ошибка:", e)
+        print(f"Неожиданная ошибка: {e}")
